@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/Sunight00/cse-341-project1/issues"
   },
-  "homepage": "https://github.com/Sunight00/cse-341-project1#readme"
+  "homepage": "https://github.com/Sunight00/cse-341-project1#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongodb": "^6.20.0"
+  }
 }

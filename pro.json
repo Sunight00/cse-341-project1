@@ -1,0 +1,28 @@
+{
+    "user":[
+        {
+            "fristName":"Ephraim",
+            "lastName":"Ewane",
+            "email":"ephraim.ewane@gmail.com",
+            "favoriteColor":"blue",
+            "birthday":"27/09/2003"
+            
+        },
+        {
+            "fristName":"Ephraim",
+            "lastName":"Ewane",
+            "email":"ephraim.ewane@gmail.com",
+            "favoriteColor":"blue",
+            "birthday":"27/09/2003"
+            
+        },
+        {
+            "fristName":"Ephraim",
+            "lastName":"Ewane",
+            "email":"ephraim.ewane@gmail.com",
+            "favoriteColor":"blue",
+            "birthday":"27/09/2003"
+            
+        }
+    ]
+}
