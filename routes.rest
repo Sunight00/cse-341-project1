@@ -1,0 +1,30 @@
+//LOCAL HOST 
+### Get all users
+Get http://localhost:3000/users
+
+### Get single user by ID
+Get http://localhost:3000/users/69091b8252f3970f113131ab
+
+### Create a new user
+Post http://localhost:3000/users   HTTP/1.1
+content-type: application/json
+
+{
+  "firstName": "New User",
+  "lastName": "Wyeuep",
+  "email": "new.example@gmail.com",
+  "favouriteColor": "Green",
+  "birthday": "1995-05-15"
+}
+
+### Update an existing user
+Put http://localhost:3000/users/69091b8252f3970f113131ab    HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Alice",
+    "lastName": "BOY",
+    "email": "alice.ugwu@gmail.com",
+    "favoriteColor": "pink",
+    "birthday": "27/09/2003"
+}

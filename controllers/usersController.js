@@ -19,4 +19,73 @@ usersController.getSingle = async (req, res) => {
     })
 };
 
+usersController.createUser = async (req, res) => {
+    const user ={
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favouriteColor: req.body.favouriteColor,
+        birthday: req.body.birthday
+    };
+    const result = await mongodb.getDatabase().db("project1").collection("users").insertOne(user);
+    if (result.acknowledged) {
+        res.status(204).send();
+    }else{
+        res.status(500).json(result.error || "Some error occurred while creating the user.");
+    }
+    
+}
+
+
+usersController.updateUser = async (req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const user ={
+        fisrtName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favouriteColor: req.body.favouriteColor,
+        birthday: req.body.birthday
+    };
+    const result = await mongodb.getDatabase().db("project1").collection("users").replaceOne({_id: userId}, user);
+    if (result.modifiedCount > 0) {
+        res.status(204).send();
+    }else{
+        res.status(500).json(result.error || "Some error occurred while creating the user.");
+    }
+    
+}
+
+usersController.deleteUser = async (req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const user ={
+        fisrtName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favouriteColor: req.body.favouriteColor,
+        birthday: req.body.birthday
+    };
+    const result = await mongodb.getDatabase().db("project1").collection("users").remove({_id: userId}, user, true);
+    if (result.deletedCount > 0) {
+        res.status(204).send();
+    }else{
+        res.status(500).json(result.error || "Some error occurred while creating the user.");
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = usersController;

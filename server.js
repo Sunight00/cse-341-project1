@@ -3,7 +3,9 @@ const app = express();
 const routes = require('./routes');
 const port = process.env.PORT || 3000;
 
-const mongodb = require("./data/database")
+const mongodb = require("./data/database");
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 app.use('/', routes)
 
