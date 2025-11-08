@@ -57,14 +57,14 @@ usersController.updateUser = async (req, res) => {
 
 usersController.deleteUser = async (req, res) => {
     const userId = new ObjectId(req.params.id);
-    const user ={
+    /*const user ={
         fisrtName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
         favouriteColor: req.body.favouriteColor,
         birthday: req.body.birthday
-    };
-    const result = await mongodb.getDatabase().db("project1").collection("users").remove({_id: userId}, user, true);
+    };*/
+    const result = await mongodb.getDatabase().db("project1").collection("users").deleteOne({_id: userId});
     if (result.deletedCount > 0) {
         res.status(204).send();
     }else{

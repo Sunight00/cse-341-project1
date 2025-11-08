@@ -28,3 +28,7 @@ content-type: application/json
     "favoriteColor": "pink",
     "birthday": "27/09/2003"
 }
+
+### Delete a user
+Delete http://localhost:3000/users/690fbf0e3728ab0d00689ff3
+content-type: application/json
