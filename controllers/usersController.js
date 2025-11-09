@@ -3,6 +3,7 @@ const ObjectId = require("mongodb").ObjectId;
 const usersController = {};
 
 usersController.getAll = async (req, res) => {
+    //#swagger.tags = ['Users']
     const result = await mongodb.getDatabase().db("project1").collection("users").find()//.toArray();
     result.toArray().then((users) => {
         res.setHeader('Content-Type', 'application/json');
@@ -11,6 +12,7 @@ usersController.getAll = async (req, res) => {
 };
 
 usersController.getSingle = async (req, res) => {
+    //#swagger.tags = ['Users']
     const userId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db("project1").collection("users").find({_id: userId})//.toArray();
     result.toArray().then((users) => {
@@ -20,6 +22,7 @@ usersController.getSingle = async (req, res) => {
 };
 
 usersController.createUser = async (req, res) => {
+    //#swagger.tags = ['Users']
     const user ={
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -38,6 +41,7 @@ usersController.createUser = async (req, res) => {
 
 
 usersController.updateUser = async (req, res) => {
+    //#swagger.tags = ['Users']
     const userId = new ObjectId(req.params.id);
     const user ={
         fisrtName: req.body.firstName,
@@ -56,6 +60,7 @@ usersController.updateUser = async (req, res) => {
 }
 
 usersController.deleteUser = async (req, res) => {
+    //#swagger.tags = ['Users']
     const userId = new ObjectId(req.params.id);
     /*const user ={
         fisrtName: req.body.firstName,

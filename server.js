@@ -7,6 +7,12 @@ const mongodb = require("./data/database");
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+app.use("/", (req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-control-Allow-Methods", "Origin", "X-Requested-With, Content-Type, Accept, Z-Key");
+    res.setHeader("Access-control-Allow-Headrs", "GET, POST, PUT, DELETE, OPTIONS");
+    next();
+})
 app.use('/', routes)
 
 
