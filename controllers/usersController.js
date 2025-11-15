@@ -19,7 +19,6 @@ usersController.getAll = async (req, res) => {
     }
 };
 
-
 usersController.getSingle = async (req, res) => {
     try {
         const userId = new ObjectId(req.params.id);
@@ -29,7 +28,7 @@ usersController.getSingle = async (req, res) => {
             .db("project1")
             .collection("users")
             .findOne({ _id: userId });
-        if (!user) {
+        if (!user) {    
             return res.status(404).json({ message: "User not found" });
         }
         res.setHeader('Content-Type', 'application/json');
