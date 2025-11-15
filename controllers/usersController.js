@@ -3,23 +3,42 @@ const ObjectId = require("mongodb").ObjectId;
 const usersController = {};
 
 usersController.getAll = async (req, res) => {
-    //#swagger.tags = ['Users']
-    const result = await mongodb.getDatabase().db("project1").collection("users").find()//.toArray();
-    result.toArray().then((users) => {
+    try {
+        const users = await mongodb
+            .getDatabase()
+            .db("project1")
+            .collection("users")
+            .find()
+            .toArray();
+
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(users);
-    })
+
+    } catch (error) {
+        res.status(500).json({ message: error });
+    }
 };
 
+
 usersController.getSingle = async (req, res) => {
-    //#swagger.tags = ['Users']
-    const userId = new ObjectId(req.params.id);
-    const result = await mongodb.getDatabase().db("project1").collection("users").find({_id: userId})//.toArray();
-    result.toArray().then((users) => {
+    try {
+        const userId = new ObjectId(req.params.id);
+
+        const user = await mongodb
+            .getDatabase()
+            .db("project1")
+            .collection("users")
+            .findOne({ _id: userId });
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(users);
-    })
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: error.toString() });
+    }
 };
+
 
 usersController.createUser = async (req, res) => {
     //#swagger.tags = ['Users']
